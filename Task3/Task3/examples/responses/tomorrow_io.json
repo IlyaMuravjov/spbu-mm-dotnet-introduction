@@ -1,0 +1,12 @@
+{
+  "service": "tomorrow.io",
+  "temperatureC": "-4.69",
+  "temperatureF": "23.558",
+  "cloudCover": "100",
+  "humidity": "86",
+  "rainMmPerHr": "0",
+  "freezingRainMmPerHr": "0",
+  "snowMmPerHr": "0",
+  "windDirectionDeg": "50.5",
+  "windSpeedMPerSec": "8"
+}

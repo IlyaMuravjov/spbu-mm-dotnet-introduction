@@ -1,0 +1,26 @@
+[
+  {
+    "service": "openweathermap.org",
+    "temperatureC": "-4.32",
+    "temperatureF": "24.224",
+    "cloudCover": "100",
+    "humidity": "93",
+    "rainMmPerHr": "Данных нет",
+    "freezingRainMmPerHr": "Данных нет",
+    "snowMmPerHr": "0.36",
+    "windDirectionDeg": "50",
+    "windSpeedMPerSec": "6"
+  },
+  {
+    "service": "tomorrow.io",
+    "temperatureC": "-4.69",
+    "temperatureF": "23.558",
+    "cloudCover": "100",
+    "humidity": "86",
+    "rainMmPerHr": "0",
+    "freezingRainMmPerHr": "0",
+    "snowMmPerHr": "0",
+    "windDirectionDeg": "50.5",
+    "windSpeedMPerSec": "8"
+  }
+]
