@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  task3:
+    image: ${DOCKER_REGISTRY-}task3
+    ports:
+      - "80:80"
+    build:
+      context: .
+      dockerfile: Task3/Dockerfile
+    environment:
+      - TASK3_LATITUDE=${TASK3_LATITUDE}
+      - TASK3_LONGITUDE=${TASK3_LONGITUDE}
+      - TASK3_TOMORROW_IO_API_KEY=${TASK3_TOMORROW_IO_API_KEY}
+      - TASK3_OPEN_WEATHER_MAP_API_KEY=${TASK3_OPEN_WEATHER_MAP_API_KEY}

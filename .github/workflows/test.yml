@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ['Task1', 'Task2']
+        project: ['Task1', 'Task2', 'Task3']
 
     steps:
       - uses: actions/checkout@v2
