@@ -24,10 +24,8 @@ jobs:
 
       - name: Ensure Docker Service is Ready
         run: |
-          until curl --output /dev/null --silent --head --fail http://localhost/health; do
-            printf '.'
-            sleep 5
-          done
+          timeout 600 bash -c 'until curl --output /dev/null --silent --head --fail \
+          http://localhost/health; do printf "."; sleep 5; done'
 
       - name: Fetch Swagger JSON
         run: curl -o swagger.json http://localhost/swagger/v1/swagger.json
@@ -40,5 +38,22 @@ jobs:
       - name: Commit and push if changes
         run: |
           git add swagger.json
-          git commit -m "Update Swagger documentation in Task3"
-          git push
+          git status
+          if [[ `git status --porcelain` ]]; then
+            git config --global user.name 'GitHub Actions Bot'
+            git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m "Update Swagger documentation in Task3"
+            # Pull-rebase and push loop
+            while true; do
+              git pull --rebase
+              if git push; then
+                echo "Push successful."
+                break
+              else
+                echo "Push failed, retrying..."
+                sleep 5
+              fi
+            done
+          else
+            echo "No changes to commit"
+          fi
