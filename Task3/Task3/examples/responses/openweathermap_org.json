@@ -1,12 +1,12 @@
 {
   "service": "openweathermap.org",
-  "temperatureC": "-4.32",
-  "temperatureF": "24.224",
-  "cloudCover": "100",
-  "humidity": "93",
+  "temperatureC": "0.04",
+  "temperatureF": "32.072",
+  "cloudCover": "0",
+  "humidity": "83",
   "rainMmPerHr": "Данных нет",
   "freezingRainMmPerHr": "Данных нет",
-  "snowMmPerHr": "0.36",
-  "windDirectionDeg": "50",
-  "windSpeedMPerSec": "6"
+  "snowMmPerHr": "Данных нет",
+  "windDirectionDeg": "290",
+  "windSpeedMPerSec": "3"
 }

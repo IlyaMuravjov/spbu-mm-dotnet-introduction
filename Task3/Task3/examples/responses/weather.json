@@ -1,26 +1,26 @@
 [
   {
     "service": "openweathermap.org",
-    "temperatureC": "-4.32",
-    "temperatureF": "24.224",
-    "cloudCover": "100",
-    "humidity": "93",
+    "temperatureC": "0.04",
+    "temperatureF": "32.072",
+    "cloudCover": "0",
+    "humidity": "83",
     "rainMmPerHr": "Данных нет",
     "freezingRainMmPerHr": "Данных нет",
-    "snowMmPerHr": "0.36",
-    "windDirectionDeg": "50",
-    "windSpeedMPerSec": "6"
+    "snowMmPerHr": "Данных нет",
+    "windDirectionDeg": "290",
+    "windSpeedMPerSec": "3"
   },
   {
     "service": "tomorrow.io",
-    "temperatureC": "-4.69",
-    "temperatureF": "23.558",
-    "cloudCover": "100",
-    "humidity": "86",
+    "temperatureC": "-3.81",
+    "temperatureF": "25.142",
+    "cloudCover": "9",
+    "humidity": "93",
     "rainMmPerHr": "0",
     "freezingRainMmPerHr": "0",
     "snowMmPerHr": "0",
-    "windDirectionDeg": "50.5",
-    "windSpeedMPerSec": "8"
+    "windDirectionDeg": "275.81",
+    "windSpeedMPerSec": "3.31"
   }
 ]
