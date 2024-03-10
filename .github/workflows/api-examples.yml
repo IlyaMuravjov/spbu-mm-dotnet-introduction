@@ -1,0 +1,80 @@
+name: Update API Examples
+
+on:
+  push:
+    branches:
+      - main
+      - task3
+
+jobs:
+  update-api-examples:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Task3
+    env:
+      TASK3_TOMORROW_IO_API_KEY: ${{ secrets.TASK3_TOMORROW_IO_API_KEY }}
+      TASK3_OPEN_WEATHER_MAP_API_KEY: ${{ secrets.TASK3_OPEN_WEATHER_MAP_API_KEY }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v1
+
+      - name: Run docker-compose
+        run: docker-compose up -d
+
+      - name: Ensure Docker Service is Ready
+        run: |
+          timeout 600 bash -c 'until curl --output /dev/null --silent --head --fail \
+          http://localhost/health; do printf "."; sleep 5; done'
+
+      - name: Install jq
+        run: sudo apt-get install jq
+
+      - name: Fetch and Store API Responses
+        run: |
+          mkdir -p Task3/examples/responses
+          chmod +x Task3/examples/requests/*.sh
+          cd Task3/examples/requests
+          for script in *.sh; do
+            ./$script
+          done
+          cd ../../../
+
+      - name: Set up Git
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Install Tree Command
+        run: sudo apt-get install tree
+
+      - name: Display File Structure
+        run: tree -L 5
+
+      - name: Commit and push if changes
+        run: |
+          git add Task3/examples/responses/*
+          # Git add responses, to commit result of `chmod +x`
+          git add Task3/examples/requests/*
+          git status
+          if [[ `git status --porcelain` ]]; then
+            git config --global user.name 'GitHub Actions Bot'
+            git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m "Update API examples"
+            # Pull-rebase and push loop
+            while true; do
+              git pull --rebase
+              if git push; then
+                echo "Push successful."
+                break
+              else
+                echo "Push failed, retrying..."
+                sleep 5
+              fi
+            done
+          else
+            echo "No changes to commit"
+          fi
